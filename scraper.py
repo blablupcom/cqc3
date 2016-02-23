@@ -13,8 +13,8 @@ def connect(url):
     #print url
     report_tree = ''
     try:
-        report_html = requests.get(url, timeout = 90)
-        report_tree = etree.HTML(report_html.text)
+        report_html = urllib2.urlopen(url, timeout = 90).read()
+        report_tree = etree.HTML(report_html)
     except:
         print url
         return connect(url)
@@ -193,6 +193,6 @@ for row in csv_file:
                                                      "report_date": unicode(report_date), "overview": unicode(overview), "overview_description": unicode(overview_description), "overview_safe": unicode(overview_safe), "overview_effective": unicode(overview_effective),
                                                      "overview_caring": unicode(overview_caring), "overview_responsive": unicode(overview_responsive), "overview_well_led": unicode(overview_well_led), "run_by": unicode(run_by), "run_by_url": unicode(run_by_url),
                                                      "overview_summary": unicode(overview_summary), "summary_safe": unicode(summary_safe), "summary_effective": unicode(summary_effective), "summary_caring": unicode(summary_caring), "summary_responsive": unicode(summary_responsive),
-                                                     "summary_well_led": unicode(summary_well_led), 'treating_people': unicode(treating_people), 'providing_care': unicode(providing_care), 'caring_for_people': unicode(caring_for_people), 'staffing': unicode(staffing), 'quality_and_suitability': unicode(quality_and_suitability)
+                                                     "summary_well_led": unicode(summary_well_led), 'summary_treating_people_with_respect': unicode(treating_people), 'summary_providing_care': unicode(providing_care), 'summary_caring_for_people_safely': unicode(caring_for_people), 'staffing': unicode(summary_staffing), 'quality_and_suitability': unicode(summary_quality_and_suitability_of_management)
                                                      })
     p+=1
